@@ -1,0 +1,17 @@
+{
+  "ventaId": 154872,
+  "fecha": "2026-09-24T16:20:35-03:00",
+  "cajeroId": 42,
+  "productos": [
+    {
+      "codigo": "7791234567890",
+      "cantidad": 2,
+      "precioUnitario": 1250.50
+    },
+    {
+      "codigo": "7799876543210",
+      "cantidad": 1,
+      "precioUnitario": 3500.00
+    }
+  ]
+}
