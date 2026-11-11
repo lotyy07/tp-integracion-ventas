@@ -7,12 +7,14 @@ require_once "VentaRepositorio.php";
 require_once "TraductorVentaA.php";
 require_once "TraductorVentaA2.php";
 require_once "EstadisticaControlador.php";
+require_once "TransformadorEstadistica.php";
+require_once "ConectorEstadisticaHttp.php";
 header("Content-Type: application/json");
 
 $conectorStock = new ConectorStockHttp();
 $mapper = new VentaMapper();
 $repositorio = new VentaRepositorio();
-$service = new VentaService($mapper, $conectorStock, $repositorio);
+$service = new VentaService($mapper, $conectorStock, $repositorio, new TransformadorEstadistica(), new ConectorEstadisticaHttp());
 
 $traductores = [new TraductorVentaA(), new TraductorVentaA2()];
 $controler = new VentaControlador($service, $traductores);

@@ -7,11 +7,13 @@ require_once "VentaService.php";
 require_once "VentaMapper.php";
 require_once "ConectorStockHttp.php";
 require_once "VentaRepositorio.php";
+require_once "TransformadorEstadistica.php";
+require_once "ConectorEstadisticaHttp.php";
 
 $conectorStock = new ConectorStockHttp();
 $mapper = new VentaMapper();
 $repositorio = new VentaRepositorio();
-$service = new VentaService($mapper, $conectorStock, $repositorio);
+$service = new VentaService($mapper, $conectorStock, $repositorio, new TransformadorEstadistica(), new ConectorEstadisticaHttp());
 
 $pendientes = $repositorio->pendientes();
 
