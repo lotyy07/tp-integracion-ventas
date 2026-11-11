@@ -9,13 +9,12 @@ require_once "ConectorStock.php";
            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
            curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
            $respuesta = curl_exec($ch);
+           $codigo = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
-           curl_close($ch);
-            if($respuesta === false) {
-                return false;
-            }
-
-            return $respuesta;
+           if ($respuesta === false || $codigo < 200 || $codigo >= 300) {
+               return false;
+           }
+           return true;
 
         }
     }
